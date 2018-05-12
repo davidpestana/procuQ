@@ -1,0 +1,8 @@
+<div *ngIf="calendarOptions" class="mt3">
+    <ng-fullcalendar #ucCalendar [options]="calendarOptions" 
+    (dayClick)="dayClick($event.detail)"
+    (eventClick)="eventClick($event.detail)" 
+    (eventDrop)="updateEvent($event.detail)"
+    (eventResize)="updateEvent($event.detail)" 
+    (clickButton)="clickButton($event.detail)"></ng-fullcalendar>
+  </div>

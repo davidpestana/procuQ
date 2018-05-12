@@ -1,0 +1,30 @@
+<div class="mt-3">
+
+  <app-worker-selector (onSelect)="addConfig($event)"></app-worker-selector>
+
+
+
+<ul class="list-group">
+    <li class="list-group-item" *ngFor="let workerConfig of workerConfigs">
+      {{workerConfig.worker.alias}}
+      <span class="badge badge-primary">{{workerConfig.worker.type}}</span>
+      <!-- {{workerConfig.updated | date}} -->
+      <span class="float-right">
+              <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{workerConfig.relation}}</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button class="dropdown-item" (click)="updateRelation(workerConfig,'titular')">titular</button>
+            <button class="dropdown-item" (click)="updateRelation(workerConfig,'favorito')">favorito</button>
+            <button class="dropdown-item" (click)="updateRelation(workerConfig,'vetado')">vetado</button>
+          </div>
+
+          <button class="btn btn-outline-danger" (click)="removeWorker(workerConfig.worker)">retirar</button>
+
+        </div>
+      </span>
+
+    </li>
+</ul>
+
+</div>
+

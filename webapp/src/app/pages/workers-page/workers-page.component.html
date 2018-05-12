@@ -1,0 +1,33 @@
+<p>a</p>
+<p>a</p>
+<app-worker-selector (onSelect)="onWorkerSelected($event)"></app-worker-selector>
+<div *ngIf="worker">
+    <ngb-tabset #t="ngbTabset">
+        <ngb-tab id="tab-selectbyid1">
+            <ng-template ngbTabTitle><b>Horarios personales</b></ng-template>
+            <ng-template ngbTabContent>
+                <app-service-manager></app-service-manager>
+            </ng-template>
+        </ngb-tab>
+        <ngb-tab id="tab-selectbyid2">
+            <ng-template ngbTabTitle><b>Vacaciones y permisos</b></ng-template>
+            <ng-template ngbTabContent>
+                <app-recurrent-week-config></app-recurrent-week-config>
+            </ng-template>
+        </ngb-tab>
+        <ngb-tab id="tab-selectbyid3">
+                <ng-template ngbTabTitle><b>Disponibilidad semanal</b></ng-template>
+                <ng-template ngbTabContent>
+                    <app-recurrent-week-config></app-recurrent-week-config>
+                </ng-template>
+            </ngb-tab>
+      <ngb-tab id="tab-selectbyid4">
+        <ng-template ngbTabTitle><b>Estado</b></ng-template>
+        <ng-template ngbTabContent>
+
+            Activo o Baja
+        </ng-template>
+      </ngb-tab>
+    </ngb-tabset>
+    
+</div>

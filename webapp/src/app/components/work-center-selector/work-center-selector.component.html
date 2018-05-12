@@ -1,0 +1,15 @@
+ <div class="input-group mb-3">
+  <input id="typeahead-basic" type="text" class="form-control" 
+  placeholder="Selecciona un centro de trabajo"
+  [(ngModel)]="workCenter"
+  [ngbTypeahead]="search.bind(this)"
+  [resultFormatter]="formatter.bind(this)"
+  [inputFormatter]="formatter.bind(this)"
+  (selectItem)="selected($event.item)"
+  />  
+  <div class="input-group-append">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" 
+    (click)="create($event)" 
+    [disabled]="!createString">+Añadir</button>
+  </div>
+</div>

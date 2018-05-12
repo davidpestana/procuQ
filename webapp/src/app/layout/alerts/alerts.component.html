@@ -1,0 +1,31 @@
+  <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-fw fa-bell"></i>
+    <span class="d-lg-none">Alerts
+      <span class="badge badge-pill badge-warning">6 New</span>
+    </span>
+    <span class="indicator text-warning d-none d-lg-block">
+      <i class="fa fa-fw fa-circle"></i>
+    </span>
+  </a>
+  <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+    <h6 class="dropdown-header">Alertas por turnos en conflicto:......................................</h6>
+    <div class="dropdown-divider"></div>
+    <ng-template ngFor let-alert [ngForOf]="alerts">
+
+      <a class="dropdown-item" href="#">
+        <span class="text-success">
+          <strong>
+            <i class="fa fa-user fa-fw"></i>{{alert.worker.alias}}</strong>
+        </span>
+        <span class="small float-right text-muted">{{ alert.turn.start | date:'fullDate'}}</span>
+        <div class="dropdown-message small">
+          <b>{{alert.turn.workCenter.name}}</b> {{ alert.turn.start | date:'shortTime'}} - {{ alert.turn.end | date:'shortTime'}}
+          <b>{{alert.conflictWith.workCenter.name}}</b> {{ alert.conflictWith.start | date:'shortTime'}} - {{ alert.conflictWith.end | date:'shortTime'}}
+        </div>
+      </a>
+      <div class="dropdown-divider"></div>
+
+    </ng-template>
+
+    <a class="dropdown-item small" href="#">View all alerts</a>
+  </div>
