@@ -39,11 +39,31 @@
     "dataSource": "db",
     "public": true
   },
-  "Service": {
+  "Worker": {
     "dataSource": "db",
     "public": true
   },
-  "Worker": {
+  "Turn": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Event": {
+    "dataSource": "db",
+    "public": true
+  },
+  "WorkerConfig": {
+    "dataSource": "db",
+    "public": true
+  },
+  "AssingationFeed": {
+    "dataSource": "db",
+    "public": true
+  },
+  "WorkerTurnConflict": {
+    "dataSource": "db",
+    "public": true
+  },
+  "test": {
     "dataSource": "db",
     "public": true
   }

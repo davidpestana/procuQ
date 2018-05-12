@@ -1,5 +1,5 @@
 {
-  "name": "WorkCenter",
+  "name": "WorkerConfig",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -14,7 +14,7 @@
       {
         "method": "stats",
         "endpoint": "/stats",
-        "description": "Statistical information for WorkCenter registers.",
+        "description": "Statistical information for WorkerConfig registers.",
         "type": "model",
         "count": {
           "on": "createdAt",
@@ -24,26 +24,21 @@
     ]
   },
   "properties": {
-    "name": {
-      "type": "string",
-      "required": true
+    "relation": {
+      "type": "string"
     }
   },
   "validations": [],
   "relations": {
-    "turns": {
-      "type": "hasMany",
-      "model": "Turn",
+    "workCenter": {
+      "type": "belongsTo",
+      "model": "WorkCenter",
       "foreignKey": ""
     },
-    "workers": {
-      "type": "hasMany",
+    "worker": {
+      "type": "belongsTo",
       "model": "Worker",
-      "foreignKey": "",
-      "options": {
-        "nestRemoting": true
-      },
-      "through": "WorkerConfig"
+      "foreignKey": ""
     }
   },
   "acls": [],

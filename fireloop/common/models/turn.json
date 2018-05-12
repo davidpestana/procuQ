@@ -1,6 +1,6 @@
 {
-  "name": "WorkCenter",
-  "base": "PersistedModel",
+  "name": "Turn",
+  "base": "Event",
   "idInjection": true,
   "options": {
     "validateUpsert": false
@@ -14,7 +14,7 @@
       {
         "method": "stats",
         "endpoint": "/stats",
-        "description": "Statistical information for WorkCenter registers.",
+        "description": "Statistical information for Turn registers.",
         "type": "model",
         "count": {
           "on": "createdAt",
@@ -24,26 +24,32 @@
     ]
   },
   "properties": {
-    "name": {
+    "type": {
       "type": "string",
       "required": true
     }
   },
   "validations": [],
   "relations": {
-    "turns": {
-      "type": "hasMany",
-      "model": "Turn",
+    "worker": {
+      "type": "belongsTo",
+      "model": "Worker",
       "foreignKey": ""
     },
-    "workers": {
+    "workCenter": {
+      "type": "belongsTo",
+      "model": "WorkCenter",
+      "foreignKey": ""
+    },
+    "conflicts": {
       "type": "hasMany",
-      "model": "Worker",
-      "foreignKey": "",
-      "options": {
-        "nestRemoting": true
-      },
-      "through": "WorkerConfig"
+      "model": "WorkerTurnConflict",
+      "foreignKey": "turnId"
+    },
+    "indirectConflicts": {
+      "type": "hasMany",
+      "model": "WorkerTurnConflict",
+      "foreignKey": "conflictWithTurnId"
     }
   },
   "acls": [],

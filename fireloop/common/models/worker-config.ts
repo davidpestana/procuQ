@@ -1,8 +1,8 @@
 import { Model } from '@mean-expert/model';
 /**
- * @module Service
+ * @module WorkerConfig
  * @description
- * Write a useful Service Model description.
+ * Write a useful WorkerConfig Model description.
  * Register hooks and remote methods within the
  * Model Decorator
  **/
@@ -18,13 +18,13 @@ import { Model } from '@mean-expert/model';
   }
 })
 
-class Service {
+class WorkerConfig {
   // LoopBack model instance is injected in constructor
   constructor(public model: any) {}
 
   // Example Operation Hook
   beforeSave(ctx: any, next: Function): void {
-    console.log('Service: Before Save');
+    console.log('WorkerConfig: Before Save');
     next();
   }
   // Example Remote Method
@@ -33,4 +33,4 @@ class Service {
   }
 }
 
-module.exports = Service;
+module.exports = WorkerConfig;

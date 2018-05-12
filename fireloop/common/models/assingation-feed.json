@@ -1,9 +1,9 @@
 {
-  "name": "Service",
+  "name": "AssingationFeed",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
-    "validateUpsert": true
+    "validateUpsert": false
   },
   "mixins": {
     "FireLoop": true,
@@ -14,7 +14,7 @@
       {
         "method": "stats",
         "endpoint": "/stats",
-        "description": "Statistical information for Service registers.",
+        "description": "Statistical information for AssingationFeed registers.",
         "type": "model",
         "count": {
           "on": "createdAt",
@@ -24,8 +24,16 @@
     ]
   },
   "properties": {
-    "name": {
-      "type": "string",
+    "turn": {
+      "type": "Turn",
+      "required": true
+    },
+    "worker": {
+      "type": "Worker",
+      "required": true
+    },
+    "workCenter": {
+      "type": "WorkCenter",
       "required": true
     }
   },

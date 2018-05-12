@@ -1,4 +1,6 @@
 import { Model } from '@mean-expert/model';
+import * as moment from 'moment';
+
 /**
  * @module Worker
  * @description
@@ -20,7 +22,31 @@ import { Model } from '@mean-expert/model';
 
 class Worker {
   // LoopBack model instance is injected in constructor
-  constructor(public model: any) {}
+  
+
+  constructor(public model: any) {
+    this.model.prototype.model = model;
+    this.model.prototype.getTurnsInConflictWithTurn = this.getTurnsInConflictWithTurn;
+
+  }
+
+
+  // check if turn was between in other turn with 8 ours of margin
+
+  getTurnsInConflictWithTurn(turn:any,next:Function):void{
+    let start = moment(turn.start).add(-7 ,'hours').add(-59,'minutes');
+    let end   = moment(turn.end).add(7 ,'hours').add(59,'minutes');  
+    let where = {
+                'and': [ 
+                          {id:{'neq':turn.id}}, 
+                          {'or':[
+                                { start:{between: [start, end]}}, 
+                                { end:  {between: [start, end]}}
+                          ]}
+                       ]
+                };
+    this.turns.find({where:where}).then((turns:any)=>next(null,turns));
+  }
 
   // Example Operation Hook
   beforeSave(ctx: any, next: Function): void {
